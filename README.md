@@ -1,4 +1,4 @@
-# Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos (ID: 2817)
+# Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos
 
 
 
