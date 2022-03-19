@@ -1,0 +1,37 @@
+pretrain: "./exp/clip_ucf/ViT-B/16/gtea/20211117_003329/last_model.pt"
+seed: 1024
+data:
+    dataset: gtea
+    modality: RGB
+    num_frames: 16
+#    ds: 16
+#    ol: 2
+    seg_length: 1
+    split: 1
+    batch_size: 12
+    workers: 0
+    gpus: 4
+    num_classes: 75
+    index_bias: 1
+    input_size: 224
+    n_split: 5
+    randaug:
+        N: 0 #2
+        M: 0  #9
+network:
+    arch: ViT-B/16  #ViT-B/32 ViT-B/16
+    init: True # scratch, imagenet, kinetics
+    drop_out: 0.0 # probability of an element to be zeroed
+    emb_dropout: 0.0 # probability of embedding to be zeroed
+    partial_bn: False
+    version: ''
+    bn_momentum: 0.1
+    consensus_type: avg
+    type: clip_ucf
+    sim_header: "Transf"   #Transf   meanP  LSTM Conv_1D Transf_cls
+    fix_text: False
+    fix_img: False
+    describe:
+logging:
+    print_freq: 10
+    eval_freq: 1
