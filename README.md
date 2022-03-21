@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 
 ## Pretrained models
-We use the base model (ViT-B/16 for image encoder & text encoder) pre-trained by [ActionCLIP](https://github.com/sallymmx/ActionCLIP) based on Kinetics-400. The model can be downloaded in [link](https://pan.baidu.com/s/1t3wROD0rLHQkxB2yD7TTkA) (pwd:v7nn). The pre-trained model should be saved in ./models/.
+We use the base model (ViT-B/16 for image encoder & text encoder) pre-trained by [ActionCLIP](https://github.com/sallymmx/ActionCLIP) based on Kinetics-400. The model can be downloaded in [link](https://pan.baidu.com/s/1Gdz8f1AwBKcbX61-qI2qxQ) (pwd:ilgw). The pre-trained model should be saved in ./models/.
 
 
 
