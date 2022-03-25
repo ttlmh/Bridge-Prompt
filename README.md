@@ -111,3 +111,7 @@ Please modify the variables *dataset* in checknpy.py for each dataset.
 
 Please modify *pretrain* in all config files according to your own working directions.
 
+## License
+
+MIT License.
+
