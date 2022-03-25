@@ -8,7 +8,18 @@ We propose a prompt-based framework, **Bridge-Prompt (Br-Prompt)**, to model the
 
 ## Prerequisites
 
-The environment is recorded in *requirements.txt*, which can be reproduced by
+### Requirements
+- torch>=1.8.0
+- torchvision
+- timm
+- mmcv-full==1.3.17
+- mmseg==0.19.0
+- mmdet==2.17.0
+- regex
+- ftfy
+- fvcore
+
+The environment is also recorded in *requirements.txt*, which can be reproduced by
 
 ```
 pip install -r requirements.txt
