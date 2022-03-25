@@ -1,6 +1,8 @@
-# Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos (ID: 2817)
+# Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos
 
+This repository contains PyTorch implementation for Bridge-Prompt (CVPR 2022).
 
+Action recognition models have shown a promising capability to classify human actions in short video clips. In a real scenario, multiple correlated human actions commonly occur in particular orders, forming semantically meaningful human activities. Conventional action recognition approaches focus on analyzing single actions. However, they fail to fully reason about the contextual relations between adjacent actions, which provide potential temporal logic for understanding long videos. In this paper, we propose a prompt-based framework, Bridge-Prompt (Br-Prompt), to model the semantics across adjacent actions, so that it simultaneously exploits both out-of-context and contextual information from a series of ordinal actions in instructional videos. More specifically, we reformulate the individual action labels as integrated text prompts for supervision, which bridge the gap between individual action semantics. The generated text prompts are paired with corresponding video clips, and together co-train the text encoder and the video encoder via a contrastive approach. The learned vision encoder has a stronger capability for ordinal-action-related downstream tasks, e.g. action segmentation and human activity recognition.
 
 ## Prerequisites
 
@@ -13,7 +15,7 @@ pip install -r requirements.txt
 
 
 ## Pretrained models
-We use the base model (ViT-B/16 for image encoder & text encoder) pre-trained by [ActionCLIP](https://github.com/sallymmx/ActionCLIP) based on Kinetics-400. The model can be downloaded in [link](https://pan.baidu.com/s/1t3wROD0rLHQkxB2yD7TTkA) (pwd:v7nn). The pre-trained model should be saved in ./models/.
+We use the base model (ViT-B/16 for image encoder & text encoder) pre-trained by [ActionCLIP](https://github.com/sallymmx/ActionCLIP) based on Kinetics-400. The model can be downloaded in [link](https://pan.baidu.com/s/1Gdz8f1AwBKcbX61-qI2qxQ) (pwd:ilgw). The pre-trained model should be saved in ./models/.
 
 
 
