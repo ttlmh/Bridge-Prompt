@@ -1,5 +1,8 @@
 # Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos
 
+Created by Muheng Li, [Lei Chen](http://ivg.au.tsinghua.edu.cn/people/Lei_Chen/), [Yueqi Duan](https://duanyueqi.github.io/), Zhilan Hu, [Jianjiang Feng](https://scholar.google.com/citations?user=qlcjuzcAAAAJ&hl=en), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=en&authuser=1)
+
+
 This repository contains PyTorch implementation for Bridge-Prompt (CVPR 2022).
 
 We propose a prompt-based framework, **Bridge-Prompt (Br-Prompt)**, to model the semantics across multiple adjacent correlated actions, so that it simultaneously exploits both out-of-context and contextual information from a series of ordinal actions in instructional videos. More specifically, we reformulate the individual action labels as integrated text prompts for supervision, which bridge the gap between individual action semantics. The generated text prompts are paired with corresponding video clips, and together co-train the text encoder and the video encoder via a contrastive approach. The learned vision encoder has a stronger capability for ordinal-action-related downstream tasks, e.g. action segmentation and human activity recognition.
