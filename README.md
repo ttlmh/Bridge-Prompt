@@ -1,6 +1,6 @@
 # Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos
 
-Created by Muheng Li, [Lei Chen](http://ivg.au.tsinghua.edu.cn/people/Lei_Chen/), [Yueqi Duan](https://duanyueqi.github.io/), Zhilan Hu, [Jianjiang Feng](https://scholar.google.com/citations?user=qlcjuzcAAAAJ&hl=en), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=en&authuser=1)
+Created by [Muheng Li](https://ttlmh.github.io/), [Lei Chen](http://ivg.au.tsinghua.edu.cn/people/Lei_Chen/), [Yueqi Duan](https://duanyueqi.github.io/), Zhilan Hu, [Jianjiang Feng](https://scholar.google.com/citations?user=qlcjuzcAAAAJ&hl=en), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=en&authuser=1)
 
 
 This repository contains PyTorch implementation for Bridge-Prompt (CVPR 2022).
