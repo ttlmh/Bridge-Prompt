@@ -9,6 +9,8 @@ We propose a prompt-based framework, **Bridge-Prompt (Br-Prompt)**, to model the
 
 ![intro](pipeline.gif)
 
+Our code is based on [CLIP](https://github.com/openai/CLIP) and [ActionCLIP](https://github.com/sallymmx/ActionCLIP).
+
 ## Prerequisites
 
 
