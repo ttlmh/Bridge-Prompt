@@ -13,8 +13,19 @@ Our code is based on [CLIP](https://github.com/openai/CLIP) and [ActionCLIP](htt
 
 ## Prerequisites
 
+### Requirements
 
-The environment is recorded in *requirements.txt*, which can be reproduced by
+- [PyTorch](https://pytorch.org/) >= 1.8
+- [wandb](https://wandb.ai/)
+- dotmap
+- yaml
+- pprint
+- tqdm
+- RandAugment
+
+You may need [ffmpeg](https://www.ffmpeg.org/) for video data pre-processing.
+
+The environment is also recorded in *requirements.txt*, which can be reproduced by
 
 ```
 pip install -r requirements.txt
