@@ -40,7 +40,7 @@ We use the base model (ViT-B/16 for image encoder & text encoder) pre-trained by
 
 ## Datasets
 
-Please download the datasets(Breakfast/GTEA/50Salads) from [link](https://zenodo.org/record/3625992#.YZ5tAdBBxPZ) provided by [MS-TCN++](https://github.com/sj-li/MS-TCN2). We extract the frames from raw videos using ffmpeg:
+Please download the datasets(Breakfast/GTEA/50Salads) from [link](https://zenodo.org/record/3625992#.YZ5tAdBBxPZ) provided by [MS-TCN++](https://github.com/sj-li/MS-TCN2). We extract the frames from raw videos using [ffmpeg](https://www.ffmpeg.org/):
 
 ```
 cmd = "ffmpeg -i " + videopath + " -vsync vfr " + videoname + "/img_%05d.jpg"
