@@ -40,13 +40,15 @@ We use the base model (ViT-B/16 for image encoder & text encoder) pre-trained by
 
 ## Datasets
 
-Please download the datasets(Breakfast/GTEA/50Salads) from [link](https://zenodo.org/record/3625992#.YZ5tAdBBxPZ) provided by [MS-TCN++](https://github.com/sj-li/MS-TCN2). We extract the frames from raw videos using [ffmpeg](https://www.ffmpeg.org/):
+Raw video files are needed to train our framework. Please download the datasets with RGB videos from the official websites ( [Breakfast](https://serre-lab.clps.brown.edu/resource/breakfast-actions-dataset/) / [GTEA](https://cbs.ic.gatech.edu/fpv/) / [50Salads](https://cvip.computing.dundee.ac.uk/datasets/foodpreparation/50salads/) ) and save them under the folder ./data/(name_dataset). For convenience, we have used the extracted frames of the raw RGB videos as inputs. You can extract the frames from raw RGB datasets by running:
 
 ```
-cmd = "ffmpeg -i " + videopath + " -vsync vfr " + videoname + "/img_%05d.jpg"
+python preprocess/get_frames.py --dataset (name_dataset) --vpath (folder_to_your_videos) --fpath ./data/(name_dataset)/frames/
 ```
 
-Furthermore, please extract the .zip files to ./data/(name_dataset) respectively.
+To be noticed, [ffmpeg](https://www.ffmpeg.org/) is needed here for frame extraction.
+
+Furthermore, please also extract the .zip files to ./data/(name_dataset) respectively.
 
 
 

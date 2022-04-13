@@ -4,8 +4,8 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', default='breakfast')
-parser.add_argument('--vpath', default='/home/limuheng/disk1/breakfast/breakfast_video/')
-parser.add_argument('--fpath', default='/home/limuheng/disk1/breakfast/breakfast_frames/')
+parser.add_argument('--vpath', default='./data/breakfast/breakfast_videos/')
+parser.add_argument('--fpath', default='./data/breakfast/frames/')
 args = parser.parse_args()
 
 path = args.vpath
