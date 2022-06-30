@@ -48,7 +48,7 @@ def get_clip_loss(image_embedding, text_embedding, logit_scale, loss_img, loss_t
 
 
 def main():
-    wandb_on = True
+    wandb_on = False
     global args, best_prec1
     global global_step
     parser = argparse.ArgumentParser()
@@ -56,7 +56,7 @@ def main():
     parser.add_argument('--log_time', default='')
     args = parser.parse_args()
     with open(args.config, 'r') as f:
-        config = yaml.load(f)
+        config = yaml.safe_load(f)
     args.dataset = config['data']['dataset']
     working_dir = os.path.join('./exp', config['network']['type'], config['network']['arch'], config['data']['dataset'],
                                args.log_time)

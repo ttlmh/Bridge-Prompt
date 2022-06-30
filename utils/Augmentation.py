@@ -1,5 +1,5 @@
 from datasets.transforms_ss import *
-from RandAugment import RandAugment
+from randaugment import RandAugment
 
 
 class GroupTransform(object):
