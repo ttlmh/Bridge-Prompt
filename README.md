@@ -50,9 +50,9 @@ Furthermore, please also extract the .zip files to ./data/(name_dataset) respect
 
 - To train Bridge-Prompt on Breakfast from Kinetics400 pretrained models, you can run:
   
-  ```
-  bash scripts/run_train.sh  ./configs/breakfast/breakfast_ft.yaml
-  ```
+```
+bash scripts/run_train.sh  ./configs/breakfast/breakfast_ft.yaml
+ ```
 
 - To train Bridge-Prompt on GTEA from Kinetics400 pretrained models, you can run:
 
