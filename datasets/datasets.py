@@ -15,7 +15,7 @@ class Breakfast(object):
                  transform=None, mode='val',
                  num_frames=16, ds=1, ol=0.5,
                  small_test=False,
-                 frame_dir='./data/breakfast/frames/',
+                 frame_dir='/mnt/breakfast/frames/',
                  label_dir='./data/breakfast/action_ids/',
                  class_dir='./data/breakfast/bf_mapping.json',
                  ext_class_dir='./data/breakfast/bf_mapping_new.json',

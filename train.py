@@ -18,6 +18,7 @@ from utils.solver import _optimizer, _lr_scheduler
 from utils.tools import *
 from utils.text_prompt import *
 from utils.saving import *
+from collections import OrderedDict
 
 
 class TextCLIP(nn.Module):
@@ -100,9 +101,15 @@ def main():
     fusion_model = fusion_earlyhyp(config.network.sim_header, model_state_dict, config.data.num_frames)
     model_text = TextCLIP(base_model)
     model_image = ImageCLIP(base_model)
-    model_text = torch.nn.DataParallel(model_text).cuda()
-    model_image = torch.nn.DataParallel(model_image).cuda()
-    fusion_model = torch.nn.DataParallel(fusion_model).cuda()
+    if config.data.gpus > 1:
+        model_text = torch.nn.DataParallel(model_text).cuda()
+        model_image = torch.nn.DataParallel(model_image).cuda()
+        fusion_model = torch.nn.DataParallel(fusion_model).cuda()
+    elif config.data.gpus == 1:
+        model_text = model_text.cuda()
+        model_image = model_image.cuda()
+        fusion_model = fusion_model.cuda()
+
     if wandb_on:
         wandb.watch(base_model)
         wandb.watch(fusion_model)
@@ -138,8 +145,13 @@ def main():
         if os.path.isfile(config.pretrain):
             print(("=> loading checkpoint '{}'".format(config.pretrain)))
             checkpoint = torch.load(config.pretrain)
-            base_model.load_state_dict(checkpoint['model_state_dict'])
+            new_checkpoint = OrderedDict()
+            for k, v in checkpoint.items():
+                name = k[7:]
+                new_checkpoint[name] = v
+            base_model.load_state_dict(new_checkpoint['model_state_dict'])
             del checkpoint
+            del new_checkpoint
         else:
             print(("=> no checkpoint found at '{}'".format(config.resume)))
 
