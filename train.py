@@ -145,13 +145,13 @@ def main():
         if os.path.isfile(config.pretrain):
             print(("=> loading checkpoint '{}'".format(config.pretrain)))
             checkpoint = torch.load(config.pretrain)
-            new_checkpoint = OrderedDict()
-            for k, v in checkpoint.items():
-                name = k[7:]
-                new_checkpoint[name] = v
-            base_model.load_state_dict(new_checkpoint['model_state_dict'])
+            # new_checkpoint = OrderedDict()
+            # for k, v in checkpoint.items():
+            #     name = k[7:]
+            #     new_checkpoint[name] = v
+            base_model.load_state_dict(checkpoint['model_state_dict'])
             del checkpoint
-            del new_checkpoint
+            # del new_checkpoint
         else:
             print(("=> no checkpoint found at '{}'".format(config.resume)))
 
