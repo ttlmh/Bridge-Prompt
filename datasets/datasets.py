@@ -63,41 +63,63 @@ class Breakfast(object):
         return seq_idx
 
     def __getitem__(self, index):
-        videoname = self.train_split[index]
-        vsplt = videoname[0].split('_', 2)
-        vname_splt = np.copy(vsplt)
-        if vsplt[1] == 'stereo':
-            vname_splt[1] = 'stereo01'
-            vname_splt[2] = vsplt[2][:-4]
-        vpath = os.path.join(self.frame_dir, vsplt[0], vsplt[1], vsplt[2])
-        vlen = len([f for f in os.listdir(vpath) if os.path.isfile(os.path.join(vpath, f))])
-        vlabel = np.load(
-            os.path.join(self.label_dir, vname_splt[0] + '_' + vname_splt[1] + '_' + vname_splt[2] + '.npy'))
-        diff = vlabel.size - vlen
-        if diff > 0:
-            vlabel = vlabel[:-diff]
-        elif diff < 0:
-            vlabel = np.pad(vlabel, (0, -diff), 'constant', constant_values=(0, vlabel[-1]))
-        path_list = os.listdir(vpath)
-        path_list.sort(key=lambda x: int(x[4:-4]))
-        frame_index = self.frame_sampler(videoname, vlen)
-        seq = [Image.open(os.path.join(vpath, path_list[i])).convert('RGB') for i in frame_index]
-        vid = vlabel[frame_index]
-        if self.pretrain:
-            vid = torch.from_numpy(vid)
-            vid = torch.unique_consecutive(vid)
-            vid = vid.numpy()
-            vid = np.pad(vid, (0, 10 - vid.shape[0]), 'constant', constant_values=(0, -1))
+        try:
+            videoname = self.train_split[index]
+            vsplt = videoname[0].split('_', 2)
+            vname_splt = np.copy(vsplt)
+            if vsplt[1] == 'stereo':
+                vname_splt[1] = 'stereo01'
+                vname_splt[2] = vsplt[2][:-4]
+            vpath = os.path.join(self.frame_dir, vsplt[0], vsplt[1], vsplt[2])
+            vlen = len([f for f in os.listdir(vpath) if os.path.isfile(os.path.join(vpath, f))])
+            vlabel = np.load(
+                os.path.join(self.label_dir, vname_splt[0] + '_' + vname_splt[1] + '_' + vname_splt[2] + '.npy'))
+            diff = vlabel.size - vlen
+            if diff > 0:
+                vlabel = vlabel[:-diff]
+            elif diff < 0:
+                vlabel = np.pad(vlabel, (0, -diff), 'constant', constant_values=(0, vlabel[-1]))
+            path_list = os.listdir(vpath)
+            path_list.sort(key=lambda x: int(x[4:-4]))
+            frame_index = self.frame_sampler(videoname, vlen)
+            seq = [Image.open(os.path.join(vpath, path_list[i])).convert('RGB') for i in frame_index]
+            vid = vlabel[frame_index]
+            if self.pretrain:
+                vid = torch.from_numpy(vid)
+                vid = torch.unique_consecutive(vid)
+                vid = vid.numpy()
+                vid = np.pad(vid, (0, 10 - vid.shape[0]), 'constant', constant_values=(0, -1))
 
-        if self.transform is not None:
-            seq = self.transform(seq)
-        else:
-            convert_tensor = transforms.ToTensor()
-            seq = [convert_tensor(img) for img in seq]
-            seq = torch.stack(seq)
-        # seq = torch.stack(seq, 1)
-        # seq = seq.permute(1, 0, 2, 3)
-        return seq, vid
+            if self.transform is not None:
+                seq = self.transform(seq)
+            else:
+                convert_tensor = transforms.ToTensor()
+                seq = [convert_tensor(img) for img in seq]
+                seq = torch.stack(seq)
+            # seq = torch.stack(seq, 1)
+            # seq = seq.permute(1, 0, 2, 3)
+            return seq, vid
+        except:
+            vpath = '/mnt/breakfast/frames/P14/cam01/P14_scrambledegg'
+            frame_index = self.frame_sampler(np.array(['P14_cam01_P14_scrambledegg', '1536']), 2854)
+            path_list = ['img_{:0>5}.jpg'.format(i) for i in range(1, 2856)]
+            vid = np.array([44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44])
+            seq = [Image.open(os.path.join(vpath, path_list[i])).convert('RGB') for i in frame_index]
+            if self.pretrain:
+                vid = torch.from_numpy(vid)
+                vid = torch.unique_consecutive(vid)
+                vid = vid.numpy()
+                vid = np.pad(vid, (0, 10 - vid.shape[0]), 'constant', constant_values=(0, -1))
+
+            if self.transform is not None:
+                seq = self.transform(seq)
+            else:
+                convert_tensor = transforms.ToTensor()
+                seq = [convert_tensor(img) for img in seq]
+                seq = torch.stack(seq)
+            # seq = torch.stack(seq, 1)
+            # seq = seq.permute(1, 0, 2, 3)
+            return seq, vid
 
     def __len__(self):
         # return 2
